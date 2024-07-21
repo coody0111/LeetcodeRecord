@@ -1,41 +1,32 @@
-/*
-// Definition for a Node.
-class Node {
-public:
-    int val;
-    vector<Node*> children;
-
-    Node() {}
-
-    Node(int _val) {
-        val = _val;
-    }
-
-    Node(int _val, vector<Node*> _children) {
-        val = _val;
-        children = _children;
-    }
-};
-*/
-
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
 class Solution {
 public:
-    vector<vector<int>> levelOrder(Node* root) {
-        queue<Node*> que;
-        vector<vector <int>> result;
-        if(root != NULL) que.push(root);
+    vector<double> averageOfLevels(TreeNode* root) {
+        queue<TreeNode*> que;
+        vector<double> result; // double type
+        if(root !=NULL) que.push(root);
         while(!que.empty()){
             int size = que.size();
-            vector<int>vec;
-            for(int i = 0 ; i < size ; ++i){
-                Node * node = que.front();
+            double sum = 0; // using sum to store all value
+            for(int i = 0; i < size ; ++i){
+                TreeNode * node = que.front();
                 que.pop();
-                vec.push_back(node -> val);
-                for(int i = 0; i < node->children.size();i ++){
-                    if(node -> children[i]) que.push(node -> children[i]);
-                }
+                sum += (node->val); 
+                if(node -> left) que.push(node->left);
+                if(node->right) que.push(node->right);
             }
-            result.push_back(vec);
+        result.push_back(sum/size); // Just divide in push_back(argument)
+
         }
         return result;
     }
