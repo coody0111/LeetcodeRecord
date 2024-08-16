@@ -1,1 +1,2 @@
-## Record some practice Leetcode problem from myself.
+# Record some practice Leetcode problem from myself.
+---
