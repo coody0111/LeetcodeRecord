@@ -1,11 +1,8 @@
-class Solution
-{
+class Solution {
 public:
-    int singleNumber(vector<int> &nums)
-    {
+    int singleNumber(vector<int>& nums) {
         int ans = 0; // eor
-        for (int i = 0; i < nums.size(); ++i)
-        {
+        for (int i = 0; i < nums.size(); ++i) {
             ans ^= nums[i];
         }
         return ans;
